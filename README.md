@@ -1,4 +1,4 @@
-# ESSNet
-=======
-ESSNet
+
+ESSNet - Embedding-based Scalable Segmentation Network
+
 
