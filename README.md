@@ -19,3 +19,16 @@ Create and activate conda environment
 conda env create -f environment.yml
 conda activate env
 ```
+To visualize training loss and performance of model in visdom, run
+```
+visdom -port 28333
+```
+To train the model for ADE20k dataset, run
+```
+python3 main.py --model deeplabv3plus_mobilenet --enable_vis --vis_port 28333 --dataset ade20k --gpu_id 0  --lr 0.01 --crop_size 512 --batch_size 10 --output_stride 16 --reduce_dim --data_root ade20k/data --loss_type nn_cross_entropy --num_channels 12 --num_neighbours 7 --vis_env ade20k_normalization_resnet50 --lr_policy multi_poly --checkpoint_dir ade20k_checkpoints
+```
+To evaluate the trained checkpoint, run
+```
+python3 main.py --model deeplabv3plus_mobilenet --enable_vis --vis_port 28333 --dataset ade20k --gpu_id 0  --lr 0.01 --crop_size 512 --batch_size 10 --output_stride 16 --reduce_dim --data_root ade20k/data --loss_type nn_cross_entropy --num_channels 12 --num_neighbours 7 --vis_env ade20k_normalization_resnet50 --lr_policy multi_poly --checkpoint_dir ade20k_checkpoints --ckpt ade20k_checkpoints/best_deeplabv3plus_mobilenet_ade_os16.pth --test_only --crop_val
+```
+The code supports ADE20k, Cityscapes, Pascal VOC, COCO-Stuff20k and COCO+LVIS dataset. Modify dataset name, appropriate number of channels, required backbone and other parameters in the above commands. If you do not want to use visdom for visualization, remove --enable_vis --vis_port 28333 from above commands.
