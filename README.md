@@ -34,3 +34,19 @@ python3 main.py --model deeplabv3plus_mobilenet --enable_vis --vis_port 28333 --
 The code supports ADE20k, Cityscapes, Pascal VOC, COCO-Stuff20k and COCO+LVIS dataset. Modify dataset name, appropriate number of channels, required backbone and other parameters in the above commands. If you do not want to use visdom for visualization, remove --enable_vis --vis_port 28333 from above commands.
 
 To build COCO+LVIS dataset (1284 classes), download COCO 2017 images, its annotations for stuff segmentation and LVIS annotations. Run [generateMasks.py](https://github.com/shipra25jain/ESSNet/blob/main/LVIS_COCO/generateMasks.py) and [generateMasksVal.py](https://github.com/shipra25jain/ESSNet/blob/main/LVIS_COCO/generateMasksVal.py) to generate segmentation masks for train and val splits.
+
+**Citation**
+
+If you use ESSNet in your research, please cite our paper:
+```
+@article{Jain2020ScalingSS,
+  title={Scaling Semantic Segmentation Beyond 1K Classes on a Single GPU},
+  author={Shipra Jain and Danda Paudel Pani and Martin Danelljan and L. Gool},
+  journal={ArXiv},
+  year={2020},
+  volume={abs/2012.07489}
+}
+```
+
+**Acknowledgement**
+1. [FAISS](https://github.com/facebookresearch/faiss)
